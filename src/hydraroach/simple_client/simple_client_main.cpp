@@ -1,4 +1,4 @@
-#include "hydraroach/replay_publish/replaypublisher.hpp"
+#include "hydraroach/hydraroach_service/replay_publish/replaypublisher.hpp"
 #include <grpc++/grpc++.h>
 #include <iostream>
 #include <string>

@@ -4,6 +4,6 @@ cc_binary(
     "simple_client_main.cpp",
   ],
   deps = [
-    "//hydraroach/replay_publish:replay_publish",
+    "//hydraroach/hydraroach_service/replay_publish:replay_publish",
   ],
 )
