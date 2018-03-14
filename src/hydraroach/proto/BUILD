@@ -1,10 +1,8 @@
-cc_proto_library(
-    name = "message_cc_proto",
-    deps = [":message_proto"],
-    visibility = ["//visibility:public"],
-)
+load("@org_pubref_rules_protobuf//cpp:rules.bzl", "cpp_proto_library")
 
-proto_library(
-    name = "message_proto",
-    srcs = ["message.proto"],
+cpp_proto_library(
+    name = "greeter_cpp_proto",
+    protos = ["greeter.proto"],
+    with_grpc = True,
+    visibility = ["//visibility:public"],
 )

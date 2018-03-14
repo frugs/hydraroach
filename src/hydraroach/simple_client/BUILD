@@ -1,7 +1,7 @@
 cc_binary(
-  name = "hydraroach-service",
+  name = "simple-client",
   srcs = [
-    "main.cpp",
+    "simple_client_main.cpp",
   ],
   deps = [
     "//hydraroach/proto:greeter_cpp_proto",
