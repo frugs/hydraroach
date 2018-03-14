@@ -36,7 +36,7 @@ private:
   std::unique_ptr<greeter::Greeter::Stub> stub_;
 };
 
-int main() {
+int main(int argc, char* argv[]) {
 
   // Instantiate the client. It requires a channel, out of which the
   // actual RPCs are created. This channel models a connection to an
@@ -45,7 +45,7 @@ int main() {
   // InsecureCredentials()).
   GreeterClient greeter(grpc::CreateChannel(
       "localhost:50051", grpc::InsecureChannelCredentials()));
-  std::string user("frugs");
+  std::string user = argc > 1 ? std::string(argv[1]) : std::string("frugs");
   std::string reply = greeter.SayHello(user);
   std::cout << "Greeter received: " << reply << std::endl;
 
