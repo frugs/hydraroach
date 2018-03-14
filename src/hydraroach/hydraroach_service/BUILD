@@ -6,7 +6,6 @@ cc_binary(
     "hydraroachservice.cpp",
   ],
   deps = [
-    "//hydraroach/proto:greeter_cpp_proto",
     "//hydraroach/proto:hydraroach_cpp_proto",
   ],
 )
