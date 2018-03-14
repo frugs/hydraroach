@@ -1,7 +1,8 @@
+#include "hydraroach/proto/greeter.grpc.pb.h"
+#include "hydraroach/replay_publish/replaypublisher.hpp"
+#include <grpc++/grpc++.h>
 #include <iostream>
 #include <string>
-#include <grpc++/grpc++.h>
-#include "hydraroach/proto/greeter.grpc.pb.h"
 
 class GreeterClient {
 public:
@@ -36,18 +37,23 @@ private:
   std::unique_ptr<greeter::Greeter::Stub> stub_;
 };
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
 
-  // Instantiate the client. It requires a channel, out of which the
-  // actual RPCs are created. This channel models a connection to an
-  // endpoint (in this case, localhost at port 50051). We indicate
-  // that the channel isn't authenticated (use of
-  // InsecureCredentials()).
-  GreeterClient greeter(grpc::CreateChannel(
-      "localhost:50051", grpc::InsecureChannelCredentials()));
-  std::string user = argc > 1 ? std::string(argv[1]) : std::string("frugs");
-  std::string reply = greeter.SayHello(user);
-  std::cout << "Greeter received: " << reply << std::endl;
+  if (argc < 2) {
+    return 0;
+  }
+
+  if (std::strcmp(argv[1], "greet") == 0) {
+    GreeterClient greeter(grpc::CreateChannel(
+        "localhost:50051", grpc::InsecureChannelCredentials()));
+
+    std::string user = argc > 2 ? std::string(argv[2]) : std::string("frugs");
+    std::string reply = greeter.SayHello(user);
+    std::cout << "Greeter received: " << reply << std::endl;
+  } else if (std::strcmp(argv[1], "announcereplay") == 0) {
+    hydraroach::ReplayPublisher replayPublisher;
+    replayPublisher.PublishReplay(std::string("Hello, World"));
+  }
 
   return 0;
 }

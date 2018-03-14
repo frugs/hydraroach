@@ -1,25 +1,23 @@
+#include "hydraroach/proto/greeter.grpc.pb.h"
+#include "hydraroachservice.hpp"
+#include <grpc++/grpc++.h>
 #include <iostream>
 #include <string>
-#include <grpc++/grpc++.h>
-#include "hydraroach/proto/greeter.pb.h"
-#include "hydraroach/proto/greeter.grpc.pb.h"
 
 class GreeterServiceImpl final : public greeter::Greeter::Service {
-  grpc::Status SayHello(
-    grpc::ServerContext* context,
-    const greeter::HelloRequest* request,
-    greeter::HelloReply* reply
-  ) override {
+  grpc::Status SayHello(grpc::ServerContext *context,
+                        const greeter::HelloRequest *request,
+                        greeter::HelloReply *reply) override {
     std::string hello("Hello, ");
     reply->set_message(hello + request->name());
     return grpc::Status::OK;
   }
 };
 
-int main()
-{
+int main() {
   std::string server_address("0.0.0.0:50051");
   GreeterServiceImpl service;
+  hydraroach::HydraRoachService hydraroachService;
 
   grpc::ServerBuilder builder;
   // Listen on the given address without any authentication mechanism.
@@ -27,6 +25,7 @@ int main()
   // Register "service" as the instance through which we'll communicate with
   // clients. In this case it corresponds to an *synchronous* service.
   builder.RegisterService(&service);
+  builder.RegisterService(&hydraroachService);
   // Finally assemble the server.
   std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
   std::cout << "Server listening on " << server_address << std::endl;

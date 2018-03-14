@@ -5,5 +5,6 @@ cc_binary(
   ],
   deps = [
     "//hydraroach/proto:greeter_cpp_proto",
+    "//hydraroach/replay_publish:replay_publish",
   ],
 )
