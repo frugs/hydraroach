@@ -1,18 +1,12 @@
-#include "hydraroach/hydraroach_service/replay_publish/replaypublisher.hpp"
+#include "hydraroach/external_service/client/externalclient.hpp"
 #include <grpc++/grpc++.h>
 #include <iostream>
 #include <string>
 
 int main(int argc, char *argv[]) {
 
-  if (argc < 2) {
-    return 0;
-  }
-
-  if (std::strcmp(argv[1], "announcereplay") == 0) {
-    hydraroach::ReplayPublisher replayPublisher;
-    replayPublisher.PublishReplay(std::string("Hello, World"));
-  }
+  hydraroach::ExternalClient client;
+  client.TagReplay("hello", "world");
 
   return 0;
 }

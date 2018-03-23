@@ -1,8 +1,8 @@
 cc_library(
-  name = "replay_publish",
+  name = "client",
   srcs = [
-    "replaypublisher.hpp",
-    "replaypublisher.cpp",
+    "externalclient.hpp",
+    "externalclient.cpp",
   ],
   deps = [
     "//hydraroach/proto:hydraroach_cpp_proto",

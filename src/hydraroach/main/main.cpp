@@ -1,15 +1,15 @@
-#include "hydraroachservice.hpp"
+#include "hydraroach/external_service/externalservice.hpp"
 #include <grpc++/grpc++.h>
 #include <iostream>
 #include <string>
 
 int main() {
   std::string server_address("0.0.0.0:50051");
-  hydraroach::HydraRoachService hydraroachService;
+  hydraroach::ExternalService externalService;
 
   grpc::ServerBuilder builder;
   builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
-  builder.RegisterService(&hydraroachService);
+  builder.RegisterService(&externalService);
   std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
   std::cout << "Server listening on " << server_address << std::endl;
 

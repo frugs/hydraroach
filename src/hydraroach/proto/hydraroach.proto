@@ -1,12 +1,13 @@
 syntax = "proto3";
 package hydraroach;
 
-service HydraRoach {
-  rpc AnnounceReplay (ReplayAnnouncement) returns (Empty) {}
+service HydraRoachRPC {
+  rpc TagReplay (TagReplayRequest) returns (Empty) {}
 }
 
-message ReplayAnnouncement {
-  string path = 1;
+message TagReplayRequest {
+  string replayHash = 1;
+  string tags = 2;
 }
 
 message Empty {}

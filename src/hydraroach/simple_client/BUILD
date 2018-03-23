@@ -1,9 +1,9 @@
 cc_binary(
-  name = "simple-client",
+  name = "simple_client",
   srcs = [
     "simple_client_main.cpp",
   ],
   deps = [
-    "//hydraroach/hydraroach_service/replay_publish:replay_publish",
+    "//hydraroach/external_service/client:client",
   ],
 )
