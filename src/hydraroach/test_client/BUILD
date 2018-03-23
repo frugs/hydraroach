@@ -1,5 +1,5 @@
 cc_binary(
-  name = "simple_client",
+  name = "test_client",
   srcs = [
     "main.cpp",
   ],
