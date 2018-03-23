@@ -1,4 +1,4 @@
-#include "hydraroach/external_service/client/externalclient.hpp"
+#include "hydraroach/client/externalclient.hpp"
 #include <grpc++/grpc++.h>
 #include <iostream>
 #include <string>

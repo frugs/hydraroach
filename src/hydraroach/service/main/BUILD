@@ -4,6 +4,6 @@ cc_binary(
     "main.cpp",
   ],
   deps = [
-    "//hydraroach/external_service:external_service",
+    "//hydraroach/service/external:external",
   ],
 )

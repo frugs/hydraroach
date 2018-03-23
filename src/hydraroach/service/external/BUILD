@@ -1,5 +1,5 @@
 cc_library(
-  name = "external_service",
+  name = "external",
   srcs = [
     "externalservice.hpp",
     "externalservice.cpp",
