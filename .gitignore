@@ -4,3 +4,4 @@ proto/*.pb.h
 
 # Bazel
 bazel*
+src/.project/
