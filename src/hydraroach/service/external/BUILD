@@ -1,11 +1,11 @@
 cc_library(
-  name = "external",
-  srcs = [
-    "externalservice.hpp",
-    "externalservice.cpp",
-  ],
-  deps = [
-    "//hydraroach/proto:hydraroach_cpp_proto",
-  ],
-  visibility = ["//visibility:public"],
+    name = "external",
+    srcs = [
+        "external_service.cpp",
+        "external_service.hpp",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//hydraroach/proto:hydraroach_cpp_proto",
+    ],
 )

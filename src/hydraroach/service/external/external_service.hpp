@@ -1,5 +1,5 @@
-#import "hydraroach/proto/hydraroach.grpc.pb.h"
-#import <grpc++/grpc++.h>
+#include "hydraroach/proto/hydraroach.grpc.pb.h"
+#include <grpc++/grpc++.h>
 
 namespace hydraroach {
 

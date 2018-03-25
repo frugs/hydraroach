@@ -1,8 +1,9 @@
-#include "externalclient.hpp"
+#include "external_client.hpp"
 
 namespace hydraroach {
 
-void ExternalClient::TagReplay(const std::string &replayHash, const std::string &tags) {
+void ExternalClient::TagReplay(const std::string &replayHash,
+                               const std::string &tags) {
   grpc::ClientContext context;
   hydraroach::TagReplayRequest request;
   request.set_replayhash(replayHash);
