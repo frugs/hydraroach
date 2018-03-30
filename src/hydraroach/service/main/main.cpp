@@ -1,7 +1,4 @@
 #include "hydraroach/service/external/external_service.hpp"
-#include <grpc++/grpc++.h>
-#include <iostream>
-#include <string>
 
 int main() {
   std::string server_address("0.0.0.0:50051");
