@@ -28,8 +28,9 @@ std::pair<std::string, filesystem::path> FindMostRecentReplay() {
     }
   }
 
-  auto replayHash = HashReplay(replayPath);
-  return std::pair<std::string, filesystem::path>(replayHash, replayPath);
+  return replayPath.empty()
+             ? std::pair<std::string, filesystem::path>()
+             : std::pair<std::string, filesystem::path>(HashReplay(replayPath), replayPath);
 }
 
 } // namespace replay
