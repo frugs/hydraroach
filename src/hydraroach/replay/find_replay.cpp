@@ -18,7 +18,7 @@ std::pair<std::string, filesystem::path> FindMostRecentReplay() {
   filesystem::path replayPath;
   for (filesystem::recursive_directory_iterator it(fullSc2ReplaysPath), end; it != end; ++it) {
     if (filesystem::is_regular_file(it->path()) &&
-        it->path().filename().extension().string() == "SC2Replay") {
+        it->path().filename().extension().string() == ".SC2Replay") {
       auto lastModified = filesystem::last_write_time(it->path());
 
       if (lastModified > mostRecentWrite) {
