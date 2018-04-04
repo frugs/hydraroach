@@ -5,5 +5,7 @@ cc_binary(
   ],
   deps = [
     "//hydraroach/service/external:external",
+    "//hydraroach/event:event",
+    "@boost//:variant",
   ],
 )

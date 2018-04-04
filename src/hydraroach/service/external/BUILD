@@ -3,6 +3,7 @@ cc_library(
     srcs = [
         "external_service.cpp",
         "external_service.hpp",
+        "request_handler.hpp",
     ],
     visibility = ["//visibility:public"],
     deps = [
