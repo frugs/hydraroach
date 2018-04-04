@@ -10,6 +10,6 @@ int main() {
   std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
   std::cout << "Server listening on " << server_address << std::endl;
 
-  server->Wait();
+  (*server).Wait();
   return 0;
 }

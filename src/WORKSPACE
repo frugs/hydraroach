@@ -29,3 +29,16 @@ cc_library(
     visibility = ["//visibility:public"],
     )""",
 )
+
+new_git_repository(
+    name = "concurrentqueue",
+    commit = "3e0eac9b7a611bb8142db82789f307f2f0ad1c33",
+    remote = "https://github.com/cameron314/concurrentqueue.git",
+    build_file_content = """
+cc_library(
+    name = "concurrentqueue",
+    srcs = [],
+    hdrs = ["blockingconcurrentqueue.h", "concurrentqueue.h"],
+    visibility = ["//visibility:public"],
+    )""",
+)
