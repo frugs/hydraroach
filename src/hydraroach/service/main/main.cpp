@@ -1,6 +1,7 @@
 #include "boost/variant/get.hpp"
 #include "hydraroach/event/event_queue.hpp"
 #include "hydraroach/service/external/external_service.hpp"
+#include "hydraroach/sc2_watcher/sc2_watcher.hpp"
 
 class EventHandler : public hydraroach::event::IEventHandler {
  public:
@@ -27,7 +28,14 @@ class RequestHandler : public hydraroach::external::IRequestHandler {
       : eventQueue_(std::move(eventQueue)) {}
 
   void TagReplay(std::string replayHash, std::string tags) override {
-    (*eventQueue_).SubmitEvent(hydraroach::event::Event::logEvent(replayHash + ":" + tags));
+    eventQueue_->SubmitEvent(hydraroach::event::Event::logEvent(replayHash + ":" + tags));
+  }
+};
+
+class Sc2WatcherSubscriber : public hydraroach::sc2_watcher::ISc2WatcherSubscriber {
+public:
+  void OnNewReplay() override {
+    std::cout << "new replay" << std::endl;
   }
 };
 
@@ -44,7 +52,11 @@ int main() {
   std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
   std::cout << "Server listening on " << server_address << std::endl;
 
-  (*eventQueue).StartProcessing();
-  (*server).Wait();
+  eventQueue->StartProcessing();
+
+  hydraroach::sc2_watcher::Sc2Watcher sc2Watcher(std::make_unique<Sc2WatcherSubscriber>());
+  sc2Watcher.StartWatchingForReplays();
+
+  server->Wait();
   return 0;
 }

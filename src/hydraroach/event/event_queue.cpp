@@ -12,7 +12,7 @@ void EventQueue::StartProcessing() {
     do {
       queue_.wait_dequeue(event);
 
-      (*eventHandler_).HandleEvent(event);
+      eventHandler_->HandleEvent(event);
     } while (event.eventType != EventType::SHUTDOWN);
   });
 }

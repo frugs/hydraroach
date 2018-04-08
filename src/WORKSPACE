@@ -24,7 +24,7 @@ new_git_repository(
     build_file_content = """
 cc_library(
     name = "picosha2",
-    srcs = ["picosha2.h"],
+    srcs = [],
     hdrs = ["picosha2.h"],
     visibility = ["//visibility:public"],
     )""",
@@ -39,6 +39,19 @@ cc_library(
     name = "concurrentqueue",
     srcs = [],
     hdrs = ["blockingconcurrentqueue.h", "concurrentqueue.h"],
+    visibility = ["//visibility:public"],
+    )""",
+)
+
+new_git_repository(
+    name = "httplib",
+    commit = "1afcc6e702af1eebcebd92c8b001f1ab29b50794",
+    remote = "https://github.com/yhirose/cpp-httplib.git",
+    build_file_content = """
+cc_library(
+    name = "httplib",
+    srcs = [],
+    hdrs = ["httplib.h"],
     visibility = ["//visibility:public"],
     )""",
 )

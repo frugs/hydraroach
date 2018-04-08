@@ -9,7 +9,7 @@ ExternalService::ExternalService(std::unique_ptr<IRequestHandler> requestHandler
 grpc::Status ExternalService::TagReplay(grpc::ServerContext*,
                                         const TagReplayRequest* request,
                                         Empty*) {
-  (*requestHandler_).TagReplay(request->replayhash(), request->tags());
+  requestHandler_->TagReplay(request->replayhash(), request->tags());
 
   return grpc::Status::OK;
 }

@@ -6,6 +6,7 @@ cc_binary(
   deps = [
     "//hydraroach/service/external:external",
     "//hydraroach/event:event",
+    "//hydraroach/sc2_watcher:sc2_watcher",
     "@boost//:variant",
   ],
 )
